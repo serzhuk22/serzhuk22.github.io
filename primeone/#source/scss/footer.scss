@@ -1,0 +1,45 @@
+footer{}
+//========================================================================================.container {
+.footer-body {
+	@include flexbox();
+	height: 125px;
+	justify-content: space-between;
+	align-items: center;
+	@media (max-width:$md2+px){
+		flex-direction: column;
+		height: auto;
+		padding: 15px 0;
+	}
+
+	/* .footer-body__column */
+	&__column {
+		@media (max-width:$md2+px){
+			&:first-child{
+				@include flexorder(2);
+			}
+		}
+	}
+}
+.footer {
+	/* .footer__text */
+	&__text {
+		color: #4d4d4d;
+		font-size: 15px;
+		line-height: 25px;
+		@media (max-width:$md2+px){
+			text-align: center;
+		}
+		a {
+			text-decoration: underline;
+			color: #4d4d4d;
+			&:hover {
+				text-decoration: none;
+			};
+		}
+	}
+	/* .footer__logo */
+	&__logo {
+	}
+}
+//====================================================================================================
+

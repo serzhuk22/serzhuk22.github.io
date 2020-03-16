@@ -1,0 +1,486 @@
+//<МИКСИНЫ>===============================================================================================
+@mixin anim($time,$delay){-webkit-transition: all $time ease $delay;-moz-transition: all $time ease $delay;-ms-transition: all $time ease $delay;-o-transition: all $time ease $delay;transition: all $time ease $delay;}
+@mixin anim_cubic($time, $delay) {-webkit-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-moz-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-ms-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-o-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;}
+@mixin rotate($deg){-moz-transform: rotate($deg);-ms-transform: rotate($deg);-webkit-transform: rotate($deg);-o-transform: rotate($deg);transform: rotate($deg);}
+@mixin scale($num){-moz-transform: scale($num);-ms-transform: scale($num);-webkit-transform: scale($num);-o-transform: scale($num);transform: scale($num);}
+@mixin skew($num){-webkit-transform: skewX($num);-moz-transform: skewX($num);-ms-transform: skewX($num);-o-transform: skewX($num);transform: skewX($num);}
+@mixin cnt($h){display: flex;flex-direction: column;height: $h;text-align: center;align-items: stretch;justify-content: center;}
+@mixin tr($x,$y,$z){transform: translate3d($x, $y, $z);};
+@mixin flexbox() {display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: -webkit-flex;display: flex;font-size: 0;}
+@mixin flexorder($val){-webkit-box-ordinal-group: $val;-moz-box-ordinal-group: $val;-ms-flex-order: $val;-webkit-order: $val;order: $val;}
+//</МИКСИНЫ>===============================================================================================
+
+//<ШРИФТЫ>===============================================================================================
+
+//<Подключаем шрифты>=======================================================================================
+
+//</Подключаем шрифты>=======================================================================================
+@import url('https://fonts.googleapis.com/css?family=PT+Sans&display=swap');
+
+@font-face {
+	font-family: 'Bebas';
+	src: url('../fonts/BebasNeueRegular.eot');
+	src: local('☺'), url('../fonts/BebasNeueRegular.woff') format('woff'), url('../fonts/BebasNeueRegular.ttf') format('truetype'), url('../fonts/BebasNeueRegular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Akzidenz';
+	src: url('../fonts/AkzidenzGroteskBQCondensedBold.eot');
+	src: local('☺'), url('../fonts/AkzidenzGroteskBQCondensedBold.woff') format('woff'), url('../fonts/AkzidenzGroteskBQCondensedBold.ttf') format('truetype'), url('../fonts/AkzidenzGroteskBQCondensedBold.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+//<Шрифт по умолчанию>==========================================================================================
+$fontfamily:"PT Sans";
+//</Шрифт по умолчанию>==========================================================================================
+
+//</ШРИФТЫ>=======================================================================================================
+
+//<ПЕРЕМЕННЫЕ>===========================================================================================================
+$minwidth:320px;
+$mw:880;
+$md1:$mw+12;
+$md2:750;
+$md3:767.98;
+$md4:479.98;
+//</ПЕРЕМЕННЫЕ>===========================================================================================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+*{padding: 0px;margin: 0px;border: 0px;}
+*,*:before,*:after{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+aside,nav,footer,header,section{display: block;}
+html,body{height: 100%;margin: 0;padding: 0;min-width: $minwidth;position: relative;width: 100%;color: #000;}
+body{font-size: 100%;line-height: 1;font-size: 14px;font-family: $fontfamily;-ms-text-size-adjust: 100%;-moz-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;
+	&.lock{overflow: hidden;
+		@media (max-width:$md3+px){
+			width: 100%;
+			position: fixed;
+			overflow: hidden;
+		}
+	}
+}
+input,button,textarea{font-family: $fontfamily;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-weight: inherit;font-size: inherit;}
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+
+//<ОБОЛОЧКА>===========================================================================================================
+.wrapper{width: 100%;min-height: 100%;overflow: hidden;
+	&.loaded{}
+}
+//</ОБОЛОЧКА>===========================================================================================================
+
+//<ОСНОВНАЯ СЕТКА>===========================================================================================================
+.container{max-width:$mw+px;margin: 0 auto;width: 100%;
+	@media (max-width:$md1+px){max-width: 750px;}
+	@media (max-width:$md2+px){max-width: none;padding:0 10px;}
+}
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+@import "popup.scss";
+@import "header.scss";
+@import "footer.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+.private {
+	@include flexbox();
+	margin: 0px 0px 75px 0px;
+	@media (max-width:$md2+px){
+		margin: 0px 0px 40px 0px;
+	}
+	/* .private__column */
+	&__column {
+		flex: 0 0 50%;
+		background-color: #000;
+		@media (max-width:$md2+px){
+			flex: 1 1 100%;
+			&:first-child {
+				display: none;
+			}
+		}
+	}
+	/* .private__image */
+	&__image {
+		height: 100%;
+	}
+}
+.private-body {
+	padding: 75px 20px 75px 60px;
+	@media (max-width:$md1+px){
+		padding: 35px 20px 35px 30px;
+	}
+	/* .private-body-content */
+	&-content {
+		max-width: 305px;
+	}
+	/* .private-body__title */
+	&__title {
+		font-size: 50px;
+		color: #fff;
+		text-transform: uppercase;
+		font-family: Akzidenz;
+		letter-spacing: 5px;
+		margin: 0px 0px 30px 0px;
+		@media (max-width:$md1+px){
+			font-size: 35px;
+			margin: 0px 0px 15px 0px;
+		}
+	}
+	/* .private-body__text */
+	&__text {
+		font-size: 15px;
+		line-height: 25px;
+		color: #fff;
+		margin: 0px 0px 50px 0px;
+		@media (max-width:$md1+px){
+			margin: 0px 0px 30px 0px;
+		}
+	}
+}
+.private-body-buttons {
+	@include flexbox();
+	align-items: center;
+	/* .private-body-buttons__item */
+	&__item {
+	}
+	/* .private-body-buttons__link */
+	&__link {
+		font-family: Bebas;
+		text-transform: uppercase;
+		font-size: 15px;
+		text-decoration: underline;
+		margin: 0px 0px 0px 15px;
+		letter-spacing: 1.5px;
+		color: #fff;
+
+	}
+}
+//========================
+.products {
+	margin: 0px 0px 40px 0px;
+	@media (max-width:$md2+px){
+		margin: 0;
+	}
+	/* .products__column */
+	&__column {
+		flex: 0 0 25%;
+		margin: 0px 0px 40px 0px;
+		@media (max-width:$md2+px){
+			flex: 0 0 50%;
+		}
+		@media (max-width:380px){
+			flex: 0 0 100%;
+		}
+	}
+}
+.products-body {
+	@include flexbox();
+	@media (max-width:$md2+px){
+		flex-wrap: wrap;
+	}
+}
+.products-item {
+	@include flexbox();	
+	flex-direction: column;
+	height: 100%;
+	/* .products-item__image */
+	&__image {
+		display: block;
+		padding: 0px 0px 102.5% 0px;
+		margin: 0px 0px 22px 0px;
+		@media (max-width:380px){
+			margin: 0px 0px 15px 0px;
+		}
+	}
+	/* .products-item__title */
+	&__title {
+		height: 50px;
+		overflow: hidden;
+		max-width: 175px;
+		font-family: Akzidenz;
+		font-size: 25px;
+		letter-spacing: 2.5px;
+		text-transform: uppercase;
+		color: #000;
+		padding: 0px 30px 0px 4px;
+		margin: 0px 0px 26px 0px;
+		@media (max-width:380px){
+			max-width: none;
+			overflow: visible;
+			height: auto;
+			margin: 0px 0px 20px 0px;
+		}
+	}
+	/* .products-item__text */
+	&__text {
+		flex: 1 1 auto;
+		max-width: 200px;
+		font-size: 15px;
+		line-height: 25px;
+		padding: 0px 0px 0px 8px;
+		margin: 0px 0px 25px 0px;
+		@media (max-width:380px){
+			max-width: none;
+			margin: 0px 0px 15px 0px;
+		}
+	}
+}
+.products-item_btn {
+	margin: 0px 0px 29px 5px;
+}
+.btn {
+}
+.products-item_link {
+	font-family: Bebas;
+	font-size: 15px;
+	color: #000;
+	text-decoration: underline;
+	letter-spacing: 1.5px;
+	padding: 0px 0px 0px 5px;
+}
+//========================
+.why {
+}
+.why-top {
+	@include flexbox();
+	background-color: #000;
+	/* .why-top__column */
+	&__column {
+		flex: 0 0 50%;
+		@media (max-width:$md1+px){
+			flex: 1 1 50%;
+			&:last-child {
+				display: none;
+			}	
+		}
+	}
+	&__text {
+		color: #fff;
+		font-family: Akzidenz;
+		font-size: 50px;
+		letter-spacing: 5px;
+		text-transform: uppercase;
+		text-align: right;
+		padding: 50px 60px 50px 0px;
+		@media (max-width:$md1+px){
+			padding: 30px 0;
+			text-align: center;
+			font-size: 40px;
+		}
+		@media (max-width:$md2+px){
+			padding: 20px 0;
+			text-align: center;
+			font-size: 30px;
+		}
+	}
+	/* .why-top__image */
+	&__image {
+		height: 100%;
+	}
+}
+.why-body {
+	padding: 50px 0px 0px 0px;
+	background-color: #ebebeb;
+	@media (max-width:$md4+px){
+		padding: 30px 0px 0px 0px;
+	}
+	/* .why-body__column */
+	&__column {
+		flex: 0 0 50%;
+		margin: 0px 0px 50px 0px;
+		@media (max-width:$md1+px){
+			flex: 1 1 100%;
+		}
+		@media (max-width:$md4+px){
+			margin: 0px 0px 30px 0px;
+		}
+	}
+}
+.why-body-row {
+	@include flexbox();
+	flex-wrap: wrap;
+}
+.why-body-item {
+	@include flexbox();
+	/* .why-body-item__icon */
+	&__icon {
+		@include flexbox();
+		justify-content:center;
+		align-items: center;
+		flex: 0 0 100px;
+		height: 100px;
+		background-color: #000;
+		@media (max-width:$md4+px){
+			flex: 0 0 80px;
+			height: 80px;
+			padding: 15px;
+			img {
+				max-width: 100%;
+			}
+		}
+	}
+}
+.why-body-item-body {
+	@include flexbox();
+	flex: 1 1 100%;
+	padding: 0px 0px 0px 11px;
+	flex-direction: column;
+	/* .why-body-item-body__title */
+	&__title {
+		flex: 1 1 auto;
+		font-family: Akzidenz;
+		font-size: 25px;
+		text-transform: uppercase;
+		letter-spacing: 2.5px;
+		@media (max-width:$md4+px){
+			font-size: 20px;
+		}
+	}
+	/* .why-body-item-body__text */
+	&__text {
+		font-size: 15px;
+		font-weight: 400;
+		line-height: 25px;
+	}
+}
+//========================
+.contacts {
+	padding: 80px 0px 0px 0px;
+	@media (max-width:$md3+px){
+		padding: 30px 0px 0px 0px;
+	}
+}
+.contacts-top {
+}
+.contacts-title {
+	font-family: Akzidenz;
+	font-size: 50px;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	margin: 0px 0px 30px 0px;
+}
+.contacts-body {
+	@include flexbox();
+	flex-wrap: wrap;
+	/* .contacts-body__column */
+	&__column {
+		flex: 0 0 50%;
+		margin: 0px 0px 20px 0px;
+		@media (max-width:$md3+px){
+			flex: 1 1 100%;
+		}
+	}
+	/* .contacts-body__item */
+	&__item {
+		font-size: 15px;
+		font-weight: 400;
+		padding: 0px 0px 0px 35px;
+		display: inline-block;
+		line-height: 27px;
+		color: #000;
+		/* .contacts-body__item--1 */
+		&--1 {
+			background: url('../img/contacts/01.svg') 0 0 no-repeat;
+		}
+		/* .contacts-body__item--2 */
+		&--2 {
+			background: url('../img/contacts/02.svg') 0 0 no-repeat;
+		}
+		/* .contacts-body__item--3 */
+		&--3 {
+			background: url('../img/contacts/03.svg') 0 0 no-repeat;
+		}
+	}
+}
+.contacts-social {
+	@include flexbox();
+	/* .contacts-social__item */
+	&__item {
+		margin: 0px 30px 0px 0px;
+		&:last-child{
+			margin: 0px 0px 0px 0px;
+		}
+		/* .contacts-social__item--1 */
+		&--1 {
+		}
+		/* .contacts-social__item--2 */
+		&--2 {
+		}
+		/* .contacts-social__item--3 */
+		&--3 {
+		}
+		/* .contacts-social__item--4 */
+		&--4 {
+		}
+	}
+}
+.contacts-content {
+	@include flexbox();
+	background-color: #000;
+	@media (max-width:$md3+px){
+		display: block;
+	}
+	/* .contacts-content__column */
+	&__column {
+		flex: 0 0 50%;
+	}
+	/* .contacts-content__map */
+	&__map {
+		height: 100%;
+		@media (max-width:$md3+px){
+			height: 300px;
+		}
+	}
+}
+.contacts-content-form {
+	padding: 55px 60px;
+	@media (max-width:$md3+px){
+		padding: 30px;
+	}
+	/* .contacts-content-form__title */
+	&__title {
+		font-family: Akzidenz;
+		font-size: 25px;
+		letter-spacing: 2.5px;
+		text-transform: uppercase;
+		color: #fff;
+		margin: 0px 0px 30px 0px;
+	}
+	/* .contacts-content-form__body */
+	&__body {
+		max-width: 375px;
+		@media (max-width:$md3+px){
+			max-width: none;
+		}
+	}
+	/* .contacts-content-form__btn */
+	&__btn {
+	}
+}
+.contacts-content-form-line {
+	margin: 0px 0px 25px 0px;
+}
+.contacts-content-form-button {
+}
+
+
+//====================================================================================================
+
+//</ОСНОВНОЙ БЛОК>====================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+@import "forms.scss";
+@import "ui.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
