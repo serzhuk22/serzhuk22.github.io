@@ -277,7 +277,7 @@
 				  balloonContent: 'г. Москва, Преображенская площадь, 8'
 			 }, {
 				  iconLayout: 'default#image',
-				  iconImageHref: 'img/common/marker.svg',
+				  iconImageHref: 'pizzatime/img/common/marker.svg',
 				  iconImageSize: [40, 63.2],
 				  iconImageOffset: [-5, -38]
 			 });
